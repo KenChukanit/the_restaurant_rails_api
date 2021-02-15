@@ -2,9 +2,11 @@ class SessionsController < ApplicationController
 
     class SessionsController < ApplicationController
         def new
+            @skip_navbar = true
         end
     
         def create
+
             
             @user = User.find_by_email params[:email]
             if  @user && @user.authenticate(params[:password])    
