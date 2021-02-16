@@ -1,4 +1,3 @@
-class SessionsController < ApplicationController
 
     class SessionsController < ApplicationController
         def new
@@ -12,7 +11,7 @@ class SessionsController < ApplicationController
             if  @user && @user.authenticate(params[:password])    
     
                 session[:user_id]=@user.id
-                redirect_to root_path, notice: 'Logged In'
+                redirect_to foods_path, notice: 'Logged In'
             else
                 flash[:alert]= 'Wrong email or password.'
                 render :new
@@ -26,4 +25,4 @@ class SessionsController < ApplicationController
         end
     end
     
-end
+

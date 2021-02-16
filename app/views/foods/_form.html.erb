@@ -1,0 +1,28 @@
+<%= form_with model:@food, local: true do |form| %>
+<% if @food.errors.present? %>
+<%= @food.errors.full_messages.join(', ')%>
+<% end %>
+<div>
+    <%= form.label :food_name  %> 
+    <%= form.text_field :food_name  %> 
+</div>
+<div>
+    <%= form.label :img_url  %>
+    <%= form.text_area :img_url, cols:50 ,rows:5  %>  
+</div>
+<div>
+   <%= form.label :price  %>  
+   <%= form.number_field :price  %> 
+</div>
+<div>
+   <%= form.label :calories  %>  
+   <%= form.number_field :calories  %> 
+</div>
+<div>
+    <%= form.label :ingradients  %>
+    <%= form.text_area :ingredients, cols:50 ,rows:5  %>  
+</div>
+<%=form.submit  %> 
+
+<% end %>
+
