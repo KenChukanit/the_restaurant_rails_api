@@ -1,5 +1,5 @@
 class Food < ApplicationRecord
-    before_save  :capitalize_title
+    
 
     belongs_to  :order, optional: true
     has_many :reviews

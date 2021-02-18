@@ -2,6 +2,7 @@ class FoodsController < ApplicationController
 
     def index
         @foods = Food.all.order(created_at: :desc)
+        @review = Review.new
     end
 
     def new
@@ -12,6 +13,7 @@ class FoodsController < ApplicationController
         @food = Food.new food_params
         if @food.save
             flash[:notice] = "Created a new menu"
+            redirect_to foods_path
         else
             render :new
         end
@@ -23,7 +25,7 @@ class FoodsController < ApplicationController
 
     def update
         if @food.update food_params
-            redirect_to food_path(@food.id), notice: "Edited the menu"
+            redirect_to foods_path(@food.id), notice: "Edited the menu"
         else
             render :edit
         end
@@ -40,7 +42,7 @@ class FoodsController < ApplicationController
     private
 
     def food_params
-        params.require(:food).permit(:food_name, :calories, :price, :img_url, :ingredients, :sales_quantities)
+        params.require(:food).permit(:food_name, :calories, :price, :img_url, :ingredients)
     end
 
 end
