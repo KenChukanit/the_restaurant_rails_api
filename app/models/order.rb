@@ -3,4 +3,5 @@ class Order < ApplicationRecord
   belongs_to :user
 
   enum status:    [:in_process, :served, :cancelled, :out_of_order]
+  has_many  :foods
 end

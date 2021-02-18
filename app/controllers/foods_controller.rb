@@ -3,6 +3,8 @@ class FoodsController < ApplicationController
     def index
         @foods = Food.all.order(created_at: :desc)
         @review = Review.new
+        order_cart = [];
+        @Order = Order.new
     end
 
     def new
