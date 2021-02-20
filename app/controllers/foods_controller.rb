@@ -21,6 +21,13 @@ class FoodsController < ApplicationController
         end
     end
 
+    def show
+        @food = Food.new food_params
+        @reviews=@food.reviews.order(created_at: :desc)
+        @review=Review.new
+        
+    end
+
     def edit
         @food = Food.find params[:id]
     end

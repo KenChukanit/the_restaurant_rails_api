@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resource :session, only: [:create, :destroy]
       get('/current_user', to: 'sessions#get_current_user')
       resources :users, only:[:create]
+      resources :orders, only:[:index, :create, :show]
     end
  
   end

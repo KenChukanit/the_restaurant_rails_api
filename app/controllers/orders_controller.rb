@@ -5,15 +5,16 @@ class OrdersController < ApplicationController
 
 
     def create
-        @food = Food.find params[:food_id]
         @order = Order.new order_params
         if user
         @order.user = current_user 
         else   
-        @order.user = "anonymous"
+        @order.user = User.first #Anonymous user
         end
+    end
 
-      
+    def show
+
     end
 
     private

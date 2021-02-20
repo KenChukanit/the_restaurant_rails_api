@@ -1,8 +1,9 @@
 class Food < ApplicationRecord
     
 
-    belongs_to  :order, optional: true
     has_many :reviews
+    has_many :food_orders, dependent: :destroy
+    has_many   :orders, through: :food_orders
 
     validates   :food_name, presence: true, uniqueness: true
     validates   :calories, presence: true
