@@ -1,0 +1,16 @@
+<%= form_with model: @order, local:true do |f| %>
+  <div class='form-group'>
+    <%= f.label :table_number %>
+    <%= f.text_field(:table_number, class: 'form-control', placeholder: 'Table Number')%>
+  </div>
+
+
+  <div>
+    <%= f.collection_check_boxes :food_ids, Food.order(food_name: :asc), :id, :food_name do |t| %> 
+      <%= t.check_box %>
+      <%= t.text  %> 
+    <% end %> 
+</div> 
+<%=f.submit  %> 
+
+<% end %>

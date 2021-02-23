@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "sessions#new"
   resource :session, only: [:new, :create, :destroy]
   resources :users
+  resources :orders, only:[:new, :index, :create, :show]
   resources :foods do
     resource :reviews, only: [:new, :create, :destroy]
   end

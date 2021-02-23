@@ -6,20 +6,28 @@ class OrdersController < ApplicationController
 
     def create
         @order = Order.new order_params
-        if user
-        @order.user = current_user 
-        else   
-        @order.user = User.first #Anonymous user
+        @order.users = [current_user]
+        if @order.save
+            flash[:notice] = "Created a new order"
+            redirect_to orders_path(@order)
+        else
+            render :new
         end
     end
 
-    def show
-
+    def index
+        @orders=Order.all.order(created_at: :desc)
     end
 
+    def show
+        @order = Order.find params[:id]
+        @foods = @order.foods
+    end
+
+
     private
-    def order_params 
-        params.require(:order).permit(:food_id [], :user_id)
+    def order_params
+        params.require(:order).permit(:table_number,user_ids:[],food_ids:[])
     end
 
 

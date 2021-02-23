@@ -1,0 +1,10 @@
+<%  @foods.each do |food| %>
+<div>
+<h2><%= link_to(food.food_name, product_path(food.price) )%></h2>
+
+<hr>
+
+
+</div>
+
+<%end%>

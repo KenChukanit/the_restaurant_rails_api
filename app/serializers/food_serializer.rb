@@ -30,5 +30,23 @@ class FoodSerializer < ActiveModel::Serializer
                   :isStaff
       end
     end
+
+    has_many :orders, through: :food_orders
+    class OrderSerializer < ActiveModel::Serializer
+      attributes :id,
+                  :status,
+                  :table_number,
+                  :food_ids
+                  :user_ids
+
+    has_many :users, through: :user_orders
+    class UserSerializer < ActiveModel::Serializer
+      attributes :id,
+                  :username,
+                  :isStaff
+    end     
+
+    end
+
   
 end
