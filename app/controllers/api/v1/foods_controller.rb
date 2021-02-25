@@ -12,6 +12,4 @@ class Api::V1::FoodsController < Api::ApplicationController
         render json: @food
     end
 
- 
-
 end

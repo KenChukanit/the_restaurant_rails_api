@@ -17,7 +17,14 @@ class OrderSerializer < ActiveModel::Serializer
     attributes :id,
                 :food_name,
                 :price
-            
   end     
+  has_many :food_orders
+  class FoodOrderSerializer < ActiveModel::Serializer
+    attributes :food_id,
+                :food_status
 
+      def food_status
+       food_status = [:in_process, :served, :cancelled, :out_of_order][object.item_status]
+      end
+  end     
 end

@@ -1,0 +1,29 @@
+<h1>Product show page</h1>
+
+
+<div>
+<h2><%= link_to(@food.food_name, food_path(@food.id) )%></h2>
+
+<p> <%= @food.price %></p>
+
+<%= image_tag @food.img_url, width: "100px" %>
+
+   <%= form_with model: [@food, @review], local: true do |f| %>
+    <ul>
+<% if @review.errors.full_messages.each do |msg|%>
+    <li>
+    <%= msg%>
+    </li>
+</ul>
+<%end%>
+<%end%>
+        <div class='form-group'>
+            <%= f.label :rating %>
+            <%= f.select(:rating, options_for_select(1..5), class: 'form-control' )%>
+        </div>
+        <div class='form-group'>
+            <%= f.label :body %>
+            <%= f.text_area(:body, class: 'form-control', placeholder: 'Your thoughts here' )%>
+        </div>
+        <%= f.submit class: 'btn btn-primary'%>
+        <% end %>

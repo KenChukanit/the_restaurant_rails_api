@@ -27,6 +27,15 @@ class Api::V1::OrdersController < Api::ApplicationController
             )
         end
     end
+
+    def get_current_order
+        current_order = Order.last
+        if current_order.users == current_user
+            render json: current_order
+        end
+        
+    end
+
     private
     def order_params
         params.require(:order).permit(:table_number,user_ids:[],food_ids:[])

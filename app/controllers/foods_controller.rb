@@ -22,7 +22,7 @@ class FoodsController < ApplicationController
     end
 
     def show
-        @food = Food.new food_params
+        @food = Food.find params[:id]
         @reviews=@food.reviews.order(created_at: :desc)
         @review=Review.new
         
