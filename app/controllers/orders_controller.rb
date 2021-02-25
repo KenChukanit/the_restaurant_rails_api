@@ -7,6 +7,11 @@ class OrdersController < ApplicationController
     def create
         @order = Order.new order_params
         @order.users = [current_user]
+        food_ids.each do |id| 
+            food = Food.find_by id  
+            sale_quantities = food.sale_quantities
+            food.add_q(sale_quantities)
+        end
         if @order.save
             flash[:notice] = "Created a new order"
             redirect_to orders_path(@order)

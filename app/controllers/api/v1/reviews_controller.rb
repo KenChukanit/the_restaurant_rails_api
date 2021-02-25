@@ -4,13 +4,13 @@ class Api::V1::ReviewsController < Api::ApplicationController
         food = Food.find params[:food_id]
         body = params[:body]
         rating = params[:rating]
-        review = Review.new review_params 
-        review.user = current_user 
-        review.food = food
+        food_id = params[:food_id]
+        user_id = params[:user_id]
+        review = Review.create(body: body, rating: rating, food_id: food_id,user_id: user_id)
+    
         if review.save
-        redirect_to foods_path, notice: "Review created"
-        end
         render json:{id: review.id}
+        end
     end
 
 

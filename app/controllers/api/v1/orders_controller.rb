@@ -7,7 +7,6 @@ class Api::V1::OrdersController < Api::ApplicationController
     def show
         @order = Order.find params[:id]
     
-        
         render json: @order
     end
 
@@ -26,15 +25,10 @@ class Api::V1::OrdersController < Api::ApplicationController
                 status: 422 # unprocessible entity HTTP status code
             )
         end
+    
     end
 
-    def get_current_order
-        current_order = Order.last
-        if current_order.users == current_user
-            render json: current_order
-        end
-        
-    end
+  
 
     private
     def order_params

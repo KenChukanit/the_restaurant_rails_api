@@ -7,4 +7,6 @@ class Order < ApplicationRecord
 
   has_many  :user_orders, dependent: :destroy
   has_many  :users, through: :user_orders
+
+  validates   :food_ids, presence: true
 end

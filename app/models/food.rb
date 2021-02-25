@@ -10,4 +10,7 @@ class Food < ApplicationRecord
     validates   :price, presence: true
     validates   :img_url, presence: true, uniqueness: true
     validates   :ingredients, presence: true
+    def self.add_q(sale_quantities)
+        @sale_quantities = sale_quantities + 1
+    end
 end
