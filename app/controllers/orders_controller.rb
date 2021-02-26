@@ -29,6 +29,17 @@ class OrdersController < ApplicationController
         @foods = @order.foods
     end
 
+    
+    def update
+        @order = Order.find params[:id]
+        if @order.update order_params
+            redirect_to orders_path, notice: "Order edited successfully."
+        
+    end
+    def destroy
+        @order.destroy
+        redirect_to orders_path
+    end
 
     private
     def order_params

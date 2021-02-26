@@ -32,6 +32,27 @@ class Api::V1::OrdersController < Api::ApplicationController
         @orders = current_user.orders
         render json: @orders 
     end
+    def update
+        status = params[:status]
+        @order = Order.find params[:id]
+        if @order.update(status: status)
+            render json: {id: @order.id}
+        else
+            render(
+                json: {errors: @order.errors},
+                status: 422
+            )
+        end
+    end
+    def destroy
+        
+        @order = Order.find params[:id]
+        if @order.destroy
+            head :ok
+        else
+            head :bad_request
+        end
+    end
 
     private
     def order_params
