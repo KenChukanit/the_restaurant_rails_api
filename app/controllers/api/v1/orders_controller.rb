@@ -28,7 +28,10 @@ class Api::V1::OrdersController < Api::ApplicationController
     
     end
 
-  
+    def order_user
+        @orders = current_user.orders
+        render json: @orders 
+    end
 
     private
     def order_params
