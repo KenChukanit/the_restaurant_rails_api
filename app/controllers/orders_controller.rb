@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
             food = Food.find_by id  
             sale_quantities = food.sale_quantities
             food.add_q(sale_quantities)
-        end
         if @order.save
             flash[:notice] = "Created a new order"
             redirect_to orders_path(@order)

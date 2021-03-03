@@ -44,8 +44,8 @@ class Api::V1::OrdersController < Api::ApplicationController
             )
         end
     end
+
     def destroy
-        
         @order = Order.find params[:id]
         if @order.destroy
             head :ok
