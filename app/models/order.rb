@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
  
 
-  enum status:    [:active, :closed, :cancelled]
+  enum status:    [:Active, :Closed, :Cancelled]
   has_many  :food_orders, dependent: :destroy
   has_many  :foods, through: :food_orders
 

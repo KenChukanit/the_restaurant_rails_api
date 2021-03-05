@@ -10,9 +10,21 @@ class Api::V1::ReviewsController < Api::ApplicationController
     
         if review.save
         render json:{id: review.id}
+        else
+            render json:{errors: review.errors },
+            status: 422 
         end
     end
 
+    def destroy
+        food = Food.find params[:food_id]
+        review = Review.find params[:id]
+        if review.destroy
+            head :ok
+        else
+            head :bad_request
+        end
+    end
 
     private
     def review_params 

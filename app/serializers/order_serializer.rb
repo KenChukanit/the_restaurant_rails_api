@@ -2,8 +2,9 @@ class OrderSerializer < ActiveModel::Serializer
   attributes :id,
               :status,
               :table_number,
-              :food_ids
-              :user_ids
+              :food_ids,
+              :user_ids,
+              :created_at
 
   has_many :users, through: :user_orders
   class UserSerializer < ActiveModel::Serializer

@@ -1,6 +1,6 @@
 class Api::V1::FoodsController < Api::ApplicationController
     def index 
-        foods= Food.order created_at: :desc
+        foods= Food.all.all_with_reviews_counts.all_with_orders_counts.order created_at: :desc
         render json: foods , each_serializer: FoodSerializer
        
     end
@@ -10,6 +10,11 @@ class Api::V1::FoodsController < Api::ApplicationController
         @review=Review.new
         
         render json: @food
+    end
+
+    def get_me_food
+
+        
     end
 
 end
