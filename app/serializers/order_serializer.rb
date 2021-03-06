@@ -4,7 +4,9 @@ class OrderSerializer < ActiveModel::Serializer
               :table_number,
               :food_ids,
               :user_ids,
-              :created_at
+              :created_at,
+              :total_amount,
+              :total_plus_tax
 
   has_many :users, through: :user_orders
   class UserSerializer < ActiveModel::Serializer

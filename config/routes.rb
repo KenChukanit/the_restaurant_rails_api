@@ -8,7 +8,13 @@ Rails.application.routes.draw do
   resources :foods do
     resource :reviews, only: [:new, :create, :destroy]
   end
-  
+  resources :charges
+  scope '/checkout' do
+    post 'create', to: 'checkout#create', as:   'checkout_create'
+    get 'cancel', to: 'checkout#cancel',  as: 'checkout_cancel'
+    get 'success', to: 'checkout#success',  as: 'checkout_success'
+ 
+  end
 
   namespace :api, defaults: {format: :json} do # we can set default response format of the block
     namespace :v1 do
