@@ -4,6 +4,8 @@ class User < ApplicationRecord
     has_many :reviews
     has_many :user_orders, dependent: :destroy
     has_many   :orders, through: :user_orders
+    has_many :favourites
+    has_many :favoured_foods, through: :favourites, source: :food
     def user_name
         "#{username.capitalize}"
     end

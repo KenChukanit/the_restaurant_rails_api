@@ -3,9 +3,7 @@ class FoodSerializer < ActiveModel::Serializer
               :food_name,
               :price,
               :ingredients,
-              :calories,
               :img_url,
-              :sales_quantities,
               :reviews
 
   has_many :reviews

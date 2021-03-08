@@ -16,6 +16,10 @@ class Ability
       can (:crud), Review do |review|
         user == review.user
       end
+
+      can :favourite, Food do |food|
+        product.user != user
+      end
   
       can :destroy, Favourite do |favourite|
         favourite.user == user
