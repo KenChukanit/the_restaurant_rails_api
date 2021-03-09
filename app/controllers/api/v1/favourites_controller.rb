@@ -8,13 +8,11 @@ class Api::V1::FavouritesController < Api::ApplicationController
     def create
         food = Food.find params[:food_id]
         favourite = Favourite.new user: current_user, food: food
-        if !can?(:favourite, food)
-            flash[:alert] = "You can't favourite your own product"
-        elsif favourite.save
-            flash[:success] = "Product favourited!"
+        if favourite.save
+    
             render json:{id: favourite.id}
         else
-            flash[:warning] = favourite.errors.full_messages.join(', ')
+         
             render json:{errors: favourite.errors },
             status: 422 
         end

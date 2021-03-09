@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_170634) do
+ActiveRecord::Schema.define(version: 2021_03_08_183416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "favorites", force: :cascade do |t|
+  create_table "favourites", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "food_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["food_id"], name: "index_favorites_on_food_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index ["food_id"], name: "index_favourites_on_food_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
   create_table "food_orders", force: :cascade do |t|
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2021_03_08_170634) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "times_of_orders"
+    t.integer "item_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "table_number"
@@ -81,8 +83,8 @@ ActiveRecord::Schema.define(version: 2021_03_08_170634) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "favorites", "foods"
-  add_foreign_key "favorites", "users"
+  add_foreign_key "favourites", "foods"
+  add_foreign_key "favourites", "users"
   add_foreign_key "food_orders", "foods"
   add_foreign_key "food_orders", "orders"
   add_foreign_key "reviews", "foods"

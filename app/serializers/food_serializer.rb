@@ -48,5 +48,10 @@ class FoodSerializer < ActiveModel::Serializer
 
     end
 
-  
+    has_many  :favouriters, through: :favourites, source: :user
+    class FavouriteSerializer < ActiveModel::Serializer
+      attributes :id,
+                  :user_id
+    end
+
 end

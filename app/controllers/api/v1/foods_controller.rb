@@ -13,7 +13,7 @@ class Api::V1::FoodsController < Api::ApplicationController
     end
 
     def get_me_food
-
+        quantity = params[:quantity]
         
     end
 
