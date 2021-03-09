@@ -9,8 +9,7 @@ class OrdersController < ApplicationController
         @order.users = [current_user]
         food_ids.each do |id| 
             food = Food.find_by id  
-            sale_quantities = food.sale_quantities
-            food.add_q(sale_quantities)
+           
         if @order.save
             flash[:notice] = "Created a new order"
             redirect_to orders_path(@order)
@@ -42,7 +41,7 @@ class OrdersController < ApplicationController
 
     private
     def order_params
-        params.require(:order).permit(:table_number,user_ids:[],food_ids:[])
+        params.require(:order).permit(user_ids:[],food_ids:[])
     end
 
 

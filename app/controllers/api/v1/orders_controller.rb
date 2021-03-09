@@ -11,13 +11,11 @@ class Api::V1::OrdersController < Api::ApplicationController
     end
 
     def create
-        table_number = params[:table_number]
         food_ids = params[:food_ids]
         food_price_array = food_ids.map{|id| (Food.find_by_id id).price}
         total_amount = food_price_array.reduce(0){|sum,price| sum+price}
         total_plus_tax = total_amount*1.05
-        order=Order.create(table_number: table_number,
-                            total_amount: total_amount, 
+        order=Order.create(total_amount: total_amount, 
                             total_plus_tax: total_plus_tax,
                             food_ids: food_ids)
         order.users = [current_user]
@@ -62,6 +60,6 @@ class Api::V1::OrdersController < Api::ApplicationController
 
     private
     def order_params
-        params.require(:order).permit(:table_number,:total_amount,:total_plus_tax, user_ids:[],food_ids:[])
+        params.require(:order).permit(:total_amount,:total_plus_tax, user_ids:[],food_ids:[])
     end
 end
