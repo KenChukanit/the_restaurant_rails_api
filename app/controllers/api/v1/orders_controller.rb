@@ -19,8 +19,6 @@ class Api::V1::OrdersController < Api::ApplicationController
                             total_plus_tax: total_plus_tax,
                             food_ids: food_ids)
         order.users = [current_user]
-        
-        
         if order.save
             render json:{id: order.id}
         else

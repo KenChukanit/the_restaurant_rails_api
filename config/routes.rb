@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         resources :favourites, shallow: :true, only: [ :create, :destroy]
       end
       resources :favourites, only: [:index]
+      resources :payments, only: [:index, :create]
       resource :session, only: [:create, :destroy]
       get('/current_user', to: 'sessions#get_current_user')
       resources :users, only:[:create]

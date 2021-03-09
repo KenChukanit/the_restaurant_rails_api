@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many   :orders, through: :user_orders
     has_many :favourites
     has_many :favoured_foods, through: :favourites, source: :food
+    has_many :payments
     def user_name
         "#{username.capitalize}"
     end

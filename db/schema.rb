@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_054846) do
+ActiveRecord::Schema.define(version: 2021_03_09_064248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,19 @@ ActiveRecord::Schema.define(version: 2021_03_09_054846) do
     t.string "payment_status", default: "unpaid"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.string "stripe_id"
+    t.string "customer_name"
+    t.string "customer_number"
+    t.decimal "amount_paid", precision: 10, scale: 2
+    t.bigint "order_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_payments_on_order_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text "body"
     t.integer "rating"
@@ -87,6 +100,8 @@ ActiveRecord::Schema.define(version: 2021_03_09_054846) do
   add_foreign_key "favourites", "users"
   add_foreign_key "food_orders", "foods"
   add_foreign_key "food_orders", "orders"
+  add_foreign_key "payments", "orders"
+  add_foreign_key "payments", "users"
   add_foreign_key "reviews", "foods"
   add_foreign_key "reviews", "users"
   add_foreign_key "user_orders", "orders"
