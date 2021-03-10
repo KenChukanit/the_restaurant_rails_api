@@ -34,6 +34,8 @@ class Api::V1::OrdersController < Api::ApplicationController
         @orders = current_user.orders
         render json: @orders 
     end
+
+   
     def update
         status = params[:status]
         @order = Order.find params[:id]
