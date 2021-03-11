@@ -28,3 +28,10 @@ class Api::V1::FavouritesController < Api::ApplicationController
         end
     end
 end
+# render json:{
+#     jwt: encode_token({
+#         id: user.id,
+#         username: user.username,
+#         isStaff: user.isStaff
+#     })
+# }

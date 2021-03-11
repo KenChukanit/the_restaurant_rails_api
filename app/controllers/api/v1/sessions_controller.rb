@@ -1,9 +1,11 @@
 class Api::V1::SessionsController < Api::ApplicationController
+    
     def create
         user=User.find_by(email: params[:email])
         if user&.authenticate(params[:password])
             session[:user_id]=user.id
-            render json:{id: user.id}
+            token = encode_token({id: user.id})
+            render json:{id: user.id, token: token}
         else
             render(
                 json: {status: 404},
@@ -20,5 +22,12 @@ class Api::V1::SessionsController < Api::ApplicationController
             json: {logged_out: true},
             status: 200
         )
+    end
+
+    private
+    def encode_token(payload={})
+        exp = 24.hours.from_now
+        payload[:exp] = exp.to_i
+        JWT.encode(payload, Rails.application.secrets.secret_key_base)
     end
 end

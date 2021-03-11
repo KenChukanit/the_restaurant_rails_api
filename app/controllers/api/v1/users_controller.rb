@@ -3,6 +3,8 @@ class Api::V1::UsersController < Api::ApplicationController
         user=User.new params.require(:user).permit(
                                             :username,
                                             :email,
+                                            :phone_number,
+                                            :address,
                                             :password,
                                             :password_confirmation
                                         )

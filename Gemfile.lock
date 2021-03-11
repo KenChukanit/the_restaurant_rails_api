@@ -93,8 +93,10 @@ GEM
     ffi (1.14.2-java)
     ffi (1.14.2-x64-mingw32)
     ffi (1.14.2-x86-mingw32)
+    geocoder (1.6.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -103,6 +105,7 @@ GEM
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jsonapi-renderer (0.2.2)
+    jwt (2.2.2)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -240,6 +243,7 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2021.1)
       tzinfo (>= 1.0.0)
+    underscore-rails (1.8.3)
     unf (0.1.4)
       unf_ext
     unf (0.1.4-java)
@@ -280,7 +284,10 @@ DEPENDENCIES
   cancancan (~> 3.2, >= 3.2.1)
   cowsay (~> 0.3.0)
   faker!
+  geocoder
+  gmaps4rails
   jbuilder (~> 2.7)
+  jwt
   listen (~> 3.3)
   pg (~> 1.1)
   puma (~> 5.0)
@@ -292,6 +299,7 @@ DEPENDENCIES
   spring
   stripe (~> 1.57, >= 1.57.1)
   tzinfo-data
+  underscore-rails (~> 1.8, >= 1.8.3)
   web-console (>= 4.1.0)
   webpacker (~> 5.0)
 

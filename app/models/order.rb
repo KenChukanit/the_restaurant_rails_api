@@ -9,4 +9,5 @@ class Order < ApplicationRecord
   has_many  :users, through: :user_orders
   has_many :payments
   validates   :food_ids, presence: true
+  validates   :user_ids, presence: true
 end

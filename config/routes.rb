@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       resources :users, only:[:create]
       resources :orders
       get('/order_user', to: 'orders#order_user')
-     
+      match "*unmatched_route", to: "application#not_found", via: :all
     end
  
   end

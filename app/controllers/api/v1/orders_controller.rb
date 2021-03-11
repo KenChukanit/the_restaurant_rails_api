@@ -1,9 +1,16 @@
 class Api::V1::OrdersController < Api::ApplicationController
+  
+   
     def index 
-        orders= Order.order created_at: :desc
+      
+        logged_in_user
+       
+        
+        orders= Order.all.order created_at: :desc
         render json: orders , each_serializer: OrderSerializer
        
     end
+
     def show
         @order = Order.find params[:id]
     
@@ -31,7 +38,9 @@ class Api::V1::OrdersController < Api::ApplicationController
     end
 
     def order_user
-        @orders = current_user.orders
+        logged_in_user
+       
+        @orders = @user.orders
         render json: @orders 
     end
 
@@ -40,7 +49,12 @@ class Api::V1::OrdersController < Api::ApplicationController
         status = params[:status]
         @order = Order.find params[:id]
         if @order.update(status: status)
+            if @order.status = "Cancelled"
+                @order.update(payment_status: "cancelled")
             render json: {id: @order.id}
+            else 
+                render json: {id: @order.id}
+            end
         else
             render(
                 json: {errors: @order.errors},
@@ -62,4 +76,6 @@ class Api::V1::OrdersController < Api::ApplicationController
     def order_params
         params.require(:order).permit(:total_amount,:total_plus_tax, user_ids:[],food_ids:[])
     end
+ 
+ 
 end

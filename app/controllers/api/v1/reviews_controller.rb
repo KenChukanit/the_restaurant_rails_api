@@ -1,4 +1,5 @@
 class Api::V1::ReviewsController < Api::ApplicationController
+    before_action :authenticate_user!
     
     def create
         food = Food.find params[:food_id]
@@ -19,7 +20,9 @@ class Api::V1::ReviewsController < Api::ApplicationController
     def destroy
         food = Food.find params[:food_id]
         review = Review.find params[:id]
-        if review.destroy
+
+        if can?(:crud, review)
+            review.destroy
             head :ok
         else
             head :bad_request

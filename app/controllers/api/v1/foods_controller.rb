@@ -1,4 +1,5 @@
 class Api::V1::FoodsController < Api::ApplicationController
+    before_action :authenticate_user!, except: [:index, :show]
     def index 
         foods= Food.all.all_with_reviews_counts.all_with_orders_counts.order created_at: :desc
         render json: foods , each_serializer: FoodSerializer

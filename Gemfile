@@ -24,6 +24,7 @@ gem 'cancancan', '~> 3.2', '>= 3.2.1'
 # gem 'image_processing', '~> 1.2'
 gem 'cowsay', '~> 0.3.0'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'jwt'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -31,6 +32,10 @@ gem 'active_model_serializers', '~> 0.10.2'
 gem 'rack-cors'
 gem 'rails_same_site_cookie'
 gem 'stripe', '~> 1.57', '>= 1.57.1'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
