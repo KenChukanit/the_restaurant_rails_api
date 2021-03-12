@@ -2,22 +2,22 @@
 <% if @food.errors.present? %>
 <%= @food.errors.full_messages.join(', ')%>
 <% end %>
-<div>
-    <%= form.label :food_name  %> 
-    <%= form.text_field :food_name  %> 
+<div class="form-group">
+    <%= form.label :food_name %> 
+    <%= form.text_field :food_name, class: "form-control"   %> 
 </div>
 <div>
     <%= form.label :img_url  %>
-    <%= form.text_area :img_url, cols:50 ,rows:5  %>  
+    <%= form.text_field :img_url, cols:50 ,rows:5 , class: "form-control"  %>  
 </div>
 <div>
-   <%= form.label :price  %>  
-   <%= form.number_field :price  %> 
+   <%= form.label :price %>  
+   <%= form.number_field :price , class: "form-control"  %> 
 </div>
 
 <div>
     <%= form.label :ingradients  %>
-    <%= form.text_area :ingredients, cols:50 ,rows:5  %>  
+    <%= form.text_area :ingredients, cols:50 ,rows:5, class: "form-control"   %>  
 </div>
 <%=form.submit  %> 
 

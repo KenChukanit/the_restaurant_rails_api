@@ -1,13 +1,18 @@
 <h1>Product show page</h1>
 
 
-<div>
-<h2><%= link_to(@food.food_name, food_path(@food.id) )%></h2>
+<div class="card w-100% align-items-center  mb-3">
+<h2 class="mt-3" style="backgroud-color: pink;"><%= link_to(@food.food_name, food_path(@food.id) )%></h2>
 
-<p> <%= @food.price %></p>
-
-<%= image_tag @food.img_url, width: "100px" %>
-
+<p > $<%= @food.price %></p>
+<p > <%= @food.ingredients %></p>
+<%= image_tag @food.img_url, width: "200px",heigth: "200px" ,class: "mb-3"%>
+</div>
+<div class="mb-3 w-100% d-flex align-items-center justify-content-center">
+    <span class="mr-3"><%= link_to("Edit", edit_food_path(@food.id))%> </span>
+    <span style="visibility: hidden;">space </span>
+    <span><%= link_to("Delete",food_path(@food.id),method: :delete,data:{confirm: "Are you sure ?"})%></span>
+</div>
    <%= form_with model: [@food, @review], local: true do |f| %>
     <ul>
 <% if @review.errors.full_messages.each do |msg|%>

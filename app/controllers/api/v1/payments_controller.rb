@@ -12,13 +12,16 @@ class Api::V1::PaymentsController < Api::ApplicationController
         customer_number = params[:customer_number]
         amount_paid = params[:amount_paid]
         stripe_id = params[:stripe_id]
+        email = params[:email]
         payment = Payment.create(order_id: order_id, 
                                 customer_number: customer_number,
                                 customer_name: customer_name,
                                 amount_paid: amount_paid,
+                                email: email,
                                 stripe_id: stripe_id)
             payment.user = current_user
             if payment.save
+            PaymentMailer.payment_received(payment).deliver_now
             order.update(payment_status: "paid")
             render json:{id: payment.id}
             else

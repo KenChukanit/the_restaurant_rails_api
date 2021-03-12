@@ -8,7 +8,7 @@ class Api::V1::SessionsController < Api::ApplicationController
             render json:{id: user.id, token: token}
         else
             render(
-                json: {status: 404},
+                json: {errors: "Invalid input"},
                 status: 404
             )
         end

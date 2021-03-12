@@ -35,6 +35,8 @@ gem 'stripe', '~> 1.57', '>= 1.57.1'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
+gem 'bootstrap', '~> 5.0.0.beta2'
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -51,6 +53,7 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem "letter_opener", :group => :development
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

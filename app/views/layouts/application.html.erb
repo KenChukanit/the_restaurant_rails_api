@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);">
   <head>
     <title>TheRestaurant</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,11 +10,11 @@
     <%= javascript_pack_tag 'application' %>
   </head>
 
-  <body>
+  <body style="background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%); height: 100vh;"  >
       <div class = "container">
-      <% if @skip_navbar == false%>
+    
       <%= render "shared/navbar" %>
-      <% end %>
+    
     <%= render "shared/alert"%>
     <%= yield %>
     </div>

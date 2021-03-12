@@ -1,7 +1,7 @@
 
     class SessionsController < ApplicationController
         def new
-            @skip_navbar = true
+            @skip_navbar = false
         end
     
         def create
