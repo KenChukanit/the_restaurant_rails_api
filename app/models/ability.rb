@@ -17,6 +17,10 @@ class Ability
         user == review.user
       end
 
+      can (:crud), Food do |food|
+        user == food.user && user.isStaff?
+      end
+
       can :favourite, Food do |food|
         product.user != user
       end

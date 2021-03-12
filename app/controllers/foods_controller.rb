@@ -1,5 +1,6 @@
 class FoodsController < ApplicationController
-
+    before_action :authenticate_user!
+    before_action :authorize_user! , except: [:index]
     def index
         @foods = Food.all.order(created_at: :desc)
         @review = Review.new
@@ -54,4 +55,7 @@ class FoodsController < ApplicationController
         params.require(:food).permit(:food_name,  :price, :img_url, :ingredients)
     end
 
+    def authorize_user!
+        redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @food)
+    end
 end
