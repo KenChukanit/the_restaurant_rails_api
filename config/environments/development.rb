@@ -48,9 +48,11 @@ Rails.application.configure do
       port: '587',
       enable_starttls_auto: true,
       authentication: :plain,
-      user_name: ENV["EMAIL_USERNAME"],
-      password: ENV["EMAIL_PASSWORD"],
-      :domain => "localhost:3000"
+   
+      # user_name: ENV["EMAIL_USERNAME"],
+      # password:  ENV["EMAIL_PASSWORD"],
+      :domain => "localhost:3000",
+      :openssl_verify_mode  => 'none'
   
   }
   

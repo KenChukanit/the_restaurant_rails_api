@@ -38,6 +38,7 @@ gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'jquery-rails'
 gem 'sendgrid-ruby'
+gem 'dotenv', '~> 2.1', '>= 2.1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

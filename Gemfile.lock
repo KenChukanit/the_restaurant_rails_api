@@ -96,6 +96,7 @@ GEM
     crass (1.0.6)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.6)
     erubi (1.10.0)
     execjs (2.7.0)
     ffi (1.14.2)
@@ -306,6 +307,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 3.2, >= 3.2.1)
   cowsay (~> 0.3.0)
+  dotenv (~> 2.1, >= 2.1.1)
   faker!
   geocoder
   gmaps4rails

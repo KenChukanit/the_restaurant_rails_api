@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
    
 
-    before_action  :user_id
+   
     def current_user
         @current_user ||= User.find_by_id session[:user_id]
     end
@@ -15,8 +15,6 @@ class ApplicationController < ActionController::Base
     def authenticate_user!
         redirect_to new_session_path, notice: 'Please sign in' unless user_signed_in?
     end
-    def user_id
-        @user = User.find_by_id session[:user_id]
-    end
+    
 
 end

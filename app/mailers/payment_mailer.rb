@@ -2,7 +2,7 @@ class PaymentMailer < ApplicationMailer
     def test
      
         mail(
-            to: 'restaurant@example.com',
+            to: 'suvimon172@hotmail.com',
             from: 'c@example.com',
             cc: '',
             bcc: '',
@@ -17,7 +17,7 @@ class PaymentMailer < ApplicationMailer
         @email = payment.email
         mail(
             to: "#{@email}",
-            subject: "Thank you #{@customer} you order"
+            subject: "Thank you #{@customer} for you order"
         )
     end
 end
