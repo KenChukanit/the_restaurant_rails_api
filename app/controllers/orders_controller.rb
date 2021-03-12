@@ -32,8 +32,11 @@ class OrdersController < ApplicationController
         @order = Order.find params[:id]
         if @order.update order_params
             redirect_to orders_path, notice: "Order edited successfully."
+        else
+            redirect_to root_path
         end
     end
+
     def destroy
         @order.destroy
         redirect_to orders_path
@@ -43,6 +46,6 @@ class OrdersController < ApplicationController
     def order_params
         params.require(:order).permit(user_ids:[],food_ids:[])
     end
-
+end
 
 end

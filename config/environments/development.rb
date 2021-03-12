@@ -50,7 +50,7 @@ Rails.application.configure do
       authentication: :plain,
       user_name: ENV["EMAIL_USERNAME"],
       password: ENV["EMAIL_PASSWORD"],
-      :openssl_verify_mode  => 'none'
+      :domain => "localhost:3000"
   
   }
   
