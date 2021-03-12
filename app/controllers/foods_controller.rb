@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
     before_action :authenticate_user!
-    before_action :authorize_user! , except: [:index]
+  
     def index
         @foods = Food.all.order(created_at: :desc)
         @review = Review.new
