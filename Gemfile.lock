@@ -233,6 +233,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    ruby_http_client (3.5.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -246,6 +247,8 @@ GEM
       sprockets-rails
       tilt
     semantic_range (2.3.1)
+    sendgrid-ruby (6.4.0)
+      ruby_http_client (~> 3.4)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -318,6 +321,7 @@ DEPENDENCIES
   rails (~> 6.1.1)
   rails_same_site_cookie
   sass-rails (>= 6)
+  sendgrid-ruby
   spring
   stripe (~> 1.57, >= 1.57.1)
   tzinfo-data
