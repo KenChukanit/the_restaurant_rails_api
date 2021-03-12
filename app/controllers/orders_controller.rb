@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
         @order = Order.find params[:id]
         if @order.update order_params
             redirect_to orders_path, notice: "Order edited successfully."
-        
+        end
     end
     def destroy
         @order.destroy
