@@ -12,7 +12,11 @@ class OrderSerializer < ActiveModel::Serializer
   class UserSerializer < ActiveModel::Serializer
     attributes :id,
                 :username,
-                :isStaff
+                :isStaff,
+                :phone_number,
+                :longitude,
+                :latitude,
+                :address
   end     
 
   has_many :foods, through: :food_orders

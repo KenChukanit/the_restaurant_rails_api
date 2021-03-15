@@ -2,10 +2,7 @@ class Api::V1::OrdersController < Api::ApplicationController
   
    
     def index 
-      
-        logged_in_user
-       
-        
+    
         orders= Order.all.order created_at: :desc
         render json: orders , each_serializer: OrderSerializer
        
@@ -27,6 +24,7 @@ class Api::V1::OrdersController < Api::ApplicationController
                             food_ids: food_ids)
         order.users = [current_user]
         if order.save
+            OrderMailer.order_received(order).deliver_now
             render json:{id: order.id}
         else
             render(
@@ -38,9 +36,7 @@ class Api::V1::OrdersController < Api::ApplicationController
     end
 
     def order_user
-        logged_in_user
-       
-        @orders = @user.orders
+        @orders = current_user.orders.order created_at: :asc
         render json: @orders 
     end
 
@@ -49,12 +45,8 @@ class Api::V1::OrdersController < Api::ApplicationController
         status = params[:status]
         @order = Order.find params[:id]
         if @order.update(status: status)
-            if @order.status = "Cancelled"
-                @order.update(payment_status: "cancelled")
+
             render json: {id: @order.id}
-            else 
-                render json: {id: @order.id}
-            end
         else
             render(
                 json: {errors: @order.errors},

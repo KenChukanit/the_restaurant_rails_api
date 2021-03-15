@@ -1,0 +1,27 @@
+<h2>Hi, <%= @name%></h2>
+<p>
+    We have received your order.
+    <% @foods.each do |food|%>
+    <ul>
+        <li><%= food.food_name%></li>
+    </ul>
+    <%end%>
+
+    Please proceed to pay $<%= @total_plus_tax%> to get us to start the delivery.
+    or call 111-222-3333 to let us know that you will pay by cash.
+    <p> 
+    Your order will be delivered as soon as the payment proceed.
+    </p> 
+</p>
+<p> 
+    You can follow the order status online on our website.
+</p>
+<p> 
+    Thank you
+</p>
+<p>
+    Cheers,
+</p>
+<p>
+    The Restaurant
+</p>
