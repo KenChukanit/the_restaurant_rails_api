@@ -8,7 +8,7 @@ class Api::V1::SessionsController < Api::ApplicationController
             render json: {
                 jwt: encode_token({
                     id: user.id,
-                    username: user.first_name,
+                    username: user.username,
                     isStaff: user.isStaff
                 })
               }
