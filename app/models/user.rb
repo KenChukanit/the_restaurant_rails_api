@@ -21,6 +21,7 @@ class User < ApplicationRecord
                 :uniqueness => true,
                 :numericality => true,
                 :length => { :minimum => 10, :maximum => 15 }
+    validates :address, presence: true
 
     def user_name
         "#{username.capitalize}"
