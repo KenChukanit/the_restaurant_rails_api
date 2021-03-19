@@ -5,7 +5,13 @@ class Api::V1::SessionsController < Api::ApplicationController
         if user&.authenticate(params[:password])
             session[:user_id]=user.id
             token = encode_token({id: user.id})
-            render json:{id: user.id, token: token}
+            render json: {
+                jwt: encode_token({
+                    id: user.id,
+                    username: user.first_name,
+                    isStaff: user.isStaff
+                })
+              }
         else
             render(
                 json: {errors: "Invalid input"},
@@ -14,6 +20,7 @@ class Api::V1::SessionsController < Api::ApplicationController
         end
     end
     def get_current_user
+
         render json: current_user
     end
     def destroy
