@@ -36,13 +36,10 @@ class Api::V1::OrdersController < Api::ApplicationController
     end
 
     def order_user
-        if current_user.orders
-        @orders ||= current_user.orders.order created_at: :asc
+        logged_in_user = current_user
+        @orders = current_user.orders.order created_at: :asc
         render json: @orders 
-        else  
-            @orders = Order.new
-            render json: @orders
-        end
+    
     end
 
    
