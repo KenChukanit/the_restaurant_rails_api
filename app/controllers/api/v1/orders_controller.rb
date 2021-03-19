@@ -36,7 +36,7 @@ class Api::V1::OrdersController < Api::ApplicationController
     end
 
     def order_user
-        logged_in_user = current_user
+       
         @orders = current_user.orders.order created_at: :asc
         render json: @orders 
     
