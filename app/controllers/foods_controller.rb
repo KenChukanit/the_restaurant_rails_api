@@ -34,6 +34,7 @@ class FoodsController < ApplicationController
     end
 
     def update
+        @food = Food.find params[:id]
         if @food.update food_params
             redirect_to foods_path(@food.id), notice: "Edited the menu"
         else
