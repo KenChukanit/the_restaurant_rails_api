@@ -13,10 +13,13 @@ class Api::V1::SessionsController < Api::ApplicationController
                 })
               }
         else
-            render(
-                json: {errors: "Invalid input"},
-                status: 404
-            )
+            json: {
+                errors: [{
+                  type: "NotFound"
+                }]
+              },
+              status: :not_found
+            
         end
     end
     def get_current_user
@@ -49,9 +52,11 @@ class Api::V1::SessionsController < Api::ApplicationController
     end
 
     private
-    def encode_token(payload={})
-        exp = 24.hours.from_now
-        payload[:exp] = exp.to_i
-        JWT.encode(payload, Rails.application.secrets.secret_key_base)
-    end
+    def encode_token(payload = {}, exp = 24.hours.from_now)
+
+        JWT.encode(
+          payload,
+          Rails.application.secrets.secret_key_base
+        )
+      end
 end
