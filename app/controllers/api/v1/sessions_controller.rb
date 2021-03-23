@@ -13,15 +13,18 @@ class Api::V1::SessionsController < Api::ApplicationController
                 })
               }
         else
-            json: {
-                errors: [{
-                  type: "NotFound"
-                }]
-              },
-              status: :not_found
+            render(
+                json: {
+                  errors: [{
+                    type: "NotFound"
+                  }]
+                },
+                status: :not_found
+              )
             
         end
     end
+
     def get_current_user
         token = request.headers["AUTHORIZATION"]
 
