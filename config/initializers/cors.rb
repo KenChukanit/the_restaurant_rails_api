@@ -1,6 +1,6 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins '127.0.0.1:300', 'localhost:3000', 'https://rails-the-restaurant.herokuapp.com','https://the-restaurant-client.herokuapp.com','https://project-1-the-restaurant.vercel.app' 
+      origins '*' 
       resource(
         '/api/*', 
         headers: :any, 
