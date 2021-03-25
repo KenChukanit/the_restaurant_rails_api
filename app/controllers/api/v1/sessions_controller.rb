@@ -3,15 +3,10 @@ class Api::V1::SessionsController < Api::ApplicationController
     def create
         user=User.find_by(email: params[:email])
         if user&.authenticate(params[:password])
+          cookies[:user_id] = user.id
             session[:user_id]=user.id
             token = encode_token({id: user.id})
-            render json: {
-                jwt: encode_token({
-                    id: user.id,
-                    username: user.username,
-                    isStaff: user.isStaff
-                })
-              }
+            render json: {user: user}
         else
             render(
                 json: {
