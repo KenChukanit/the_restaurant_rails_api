@@ -1,1 +1,1 @@
-MyApp::Application.config.session_store :cookie_store, key: '_MyApp_session', domain: :all, tld_length: 2
+MyApp::Application.config.session_store :cookie_store, domain: :all, tld_length: 2
