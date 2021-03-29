@@ -1,1 +1,1 @@
-Rails.application.config.session_store :cookie_store, key: '_my_domain', domain: :all, tld_length: 2
+Rails.application.config.session_store :cookie_store, key: '_authentication_app', domain: 'https://rails-the-restaurant.herokuapp.com/', tld_length: 2
