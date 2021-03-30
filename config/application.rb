@@ -34,9 +34,13 @@ module TheRestaurant
   
     # Don't generate system test files.
     config.generators.system_tests = nil
-    config.middleware.use Rack::MethodOverride
-    config.middleware.use ActionDispatch::Flash
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins  'https://rails-the-restaurant.herokuapp.com','https://project-1-the-restaurant.vercel.app','http://project-1-the-restaurant.vercel.app' 
+        resource '/api/v1/*', :headers => :any, :methods => [
+          :get, :post, :options, :delete, :patch, :put
+        ]
+      end
+    end
   end
 end
